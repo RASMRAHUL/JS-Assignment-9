@@ -1,0 +1,116 @@
+
+
+1. Carefully observe this example.
+
+a) Is the InnerFunction() a closure? 
+
+In JavaScript, a closure is a function that has access to 
+variables in its outer scope, even after the outer function has returned.
+Whether a function is a closure or not depends on how it is 
+defined and used. For example, if you have a function 
+InnerFunction that is defined inside another function and has 
+access to variables in its outer scope, it would be considered a closure.
+
+ex-
+function OuterFunction(x) {
+  var innerVariable = x;
+
+  function InnerFunction() {
+    console.log(innerVariable);
+  }
+
+  return InnerFunction;
+}
+
+var closure = OuterFunction("Hello Closure");
+closure(); // logs "Hello Closure"
+
+
+
+b) What is output of this program
+
+OuterFunction()
+
+{ var outerVariable = 100;
+
+function InnerFunction() {
+
+alert(outerVariable);
+
+}
+
+return InnerFunction;
+
+}
+
+var innerFunc = OuterFunction();
+
+innerFunc();
+
+
+The output of this program will be 100. 
+The OuterFunction returns the reference of 
+the InnerFunction and the innerFunc variable 
+is assigned this reference. When innerFunc() 
+is executed, it alerts the value of the outerVariable which is 100.
+
+
+
+2. What is the difference between a closure and a scope ?
+
+
+A closure is a function that has access to variables 
+in its outer scope even after the outer function has returned. 
+In other words, a closure is a persistent scope that holds 
+on to its variables even after the function has completed.
+
+A scope, on the other hand, is a region in the code 
+where a particular variable is defined and can be accessed. 
+Scopes can be nested and variables in an inner scope can be 
+accessed by functions defined in an outer scope.
+
+So, the main difference between closure and scope 
+is that a closure is a specific type of scope that 
+persists after the outer function has completed, while a 
+scope refers to the region in the code where 
+a variable is defined and accessible.
+
+
+
+3. What is a lexical scope and how is it related to closure?
+
+Lexical scope refers to the static scoping rules in 
+which the scope of a variable is determined by 
+the location of its declaration within the code. 
+A closure is a function that has access to variables 
+in its outer scope even after the outer function 
+has returned. In other words, closures are functions 
+that have access to their outer scope even after the 
+outer function has returned. So, the lexical scope 
+of a closure is the outer scope from which it has 
+access to variables and functions. In other words, 
+the lexical scope of a closure is defined by the 
+position of its declaration within the code and 
+the relationship it has with its outer scopes.
+
+
+
+4. Output of following closure ?
+for (var i = 0; i < 3; i++) {
+setTimeout(function log() {
+console.log(i); // What is logged?
+}, 1000);
+}
+
+
+
+The output of this closure will be:
+3
+3
+3
+
+The closure is capturing the variable i 
+from its outer scope, but by the time each 
+of the setTimeout functions are executed, 
+the for loop has already completed and the 
+value of i is 3. Therefore, all three setTimeout functions will log 3.
